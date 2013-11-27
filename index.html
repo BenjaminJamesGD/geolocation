@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+
+<script type="text/javascript">
+
+function getLocationConstant()
+
+{
+    if(navigator.geolocation)
+    {
+        navigator.geolocation.getCurrentPosition(onGeoSuccess,onGeoError);  
+    } else {
+        alert("Your browser or device doesn't support Geolocation");
+    }
+}
+
+function onGeoSuccess(event)
+{
+    document.getElementById("Latitude").value =  event.coords.latitude; 
+    document.getElementById("Longitude").value = event.coords.longitude;
+
+}
+
+function onGeoError(event)
+{
+    alert("Error code " + event.code + ". " + event.message);
+}
+
+ </script>
+
+ <br><br>
+ <cfform action="gps2.cfm" method="post">
+ Latitude: <input type="text" id="Latitude" name="Latitude" value="">
+ <br><br>
+ Longitude: <input type="text" id="Longitude" name="Longitude" value="">
+ <br><br>
+ <input type="button" value="Get Location" onclick="getLocationConstant()"/>
+ <br><br>
+ <input type="submit" value="Add GPS Location" class=small>
+ </cfform>
+</script>
+
+
+</head>
+
+<body>
+
+
+</body>
+</html>
